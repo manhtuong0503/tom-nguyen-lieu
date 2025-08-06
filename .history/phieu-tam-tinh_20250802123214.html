@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu Tạm Tính</title>
+    <link rel="stylesheet" href="phieu-tam-tinh.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="company-info">
+                <p><strong>CTY TNHH THỦY SẢN HỮU LỘC</strong></p>
+                <p>Ấp Châu Khánh, Phường Khánh Hòa, TX Vĩnh Châu, Tỉnh ST.</p>
+            </div>
+            <div class="document-info">
+                <h2>PHIẾU TẠM TÍNH</h2>
+                <div class="date-input-section">
+                    <label>Ngày: 
+                        <input type="date" id="document-date" class="date-input" value="2025-04-28">
+                    </label>
+                </div>
+                <div class="customer-section">
+                    <label>Khách hàng: <input type="text" id="khach-hang" placeholder="Nhập tên khách hàng"></label>
+                    <label style="margin-left: 20px;">Bảng: <input type="text" id="bang" placeholder="Nhập số bảng"></label>
+                </div>
+            </div>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th rowspan="2">SỐ LÔ</th>
+                    <th rowspan="2">TÊN CTY</th>
+                    <th rowspan="2">LOẠI</th>
+                    <th rowspan="2">SIZE</th>
+                    <th rowspan="2">%</th>
+                    <th rowspan="2">K.LƯỢNG</th>
+                    <th rowspan="2">ĐƠN GIÁ</th>
+                    <th rowspan="2">THÀNH TIỀN</th>
+                </tr>
+                <tr class="sub-header">
+                    <!-- Dòng này để tạo không gian cho header 2 tầng -->
+                </tr>
+            </thead>
+            <tbody id="invoice-items">
+                <!-- Lô 1 -->
+                <tr class="lot-row">
+                    <td rowspan="6" class="lot-number">1</td>
+                    <td rowspan="6" class="company-name">FM</td>
+                    <td rowspan="6" class="product-type">GST</td>
+                    <td><input type="text" class="item-input" name="size" value="27C"></td>
+                    <td><input type="number" class="item-input" name="percent" step="0.01" value="93.54"></td>
+                    <td><input type="number" class="item-input" name="weight" step="0.01" value="3114.66"></td>
+                    <td><input type="number" class="item-input" name="price" step="0.01" value="165.00" onchange="calculateRowTotal(this)"></td>
+                    <td class="thanh-tien">513.918</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="item-input" name="size" value="TRUNG"></td>
+                    <td><input type="number" class="item-input" name="percent" step="0.01" value="5.60"></td>
+                    <td><input type="number" class="item-input" name="weight" step="0.01" value="186.47"></td>
+                    <td><input type="number" class="item-input" name="price" step="0.01" value="148.50" onchange="calculateRowTotal(this)"></td>
+                    <td class="thanh-tien">27.690</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="item-input" name="size" value="BM"></td>
+                    <td><input type="number" class="item-input" name="percent" step="0.01" value="0.45"></td>
+                    <td><input type="number" class="item-input" name="weight" step="0.01" value="14.98"></td>
+                    <td><input type="number" class="item-input" name="price" step="0.01" value="115.50" onchange="calculateRowTotal(this)"></td>
+                    <td class="thanh-tien">1.731</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="item-input" name="size" value="B"></td>
+                    <td><input type="number" class="item-input" name="percent" step="0.01" value="0.24"></td>
+                    <td><input type="number" class="item-input" name="weight" step="0.01" value="7.99"></td>
+                    <td><input type="number" class="item-input" name="price" step="0.01" value="35.00" onchange="calculateRowTotal(this)"></td>
+                    <td class="thanh-tien">280</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="item-input" name="size" value="B"></td>
+                    <td><input type="number" class="item-input" name="percent" step="0.01" value="0.17"></td>
+                    <td><input type="number" class="item-input" name="weight" step="0.01" value="5.66"></td>
+                    <td><input type="number" class="item-input" name="price" step="0.01" value="10.00" onchange="calculateRowTotal(this)"></td>
+                    <td class="thanh-tien">57</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="3"><strong>TỔNG CỘNG</strong></td>
+                    <td class="total-percent">100.00</td>
+                    <td class="total-weight">3.329.76</td>
+                    <td colspan="1" style="background-color: #ffeb3b;"><strong>543.676</strong></td>
+                </tr>
+                <tr class="phidn-row">
+                    <td colspan="6" style="text-align: center; color: red;"><strong>(-) PHÍ DN</strong></td>
+                    <td colspan="2" style="background-color: #ffeb3b;">0</td>
+                </tr>
+                <tr class="thanhtien-row">
+                    <td colspan="6" style="text-align: center; color: red;"><strong>THÀNH TIỀN</strong></td>
+                    <td colspan="2" style="background-color: #ffeb3b;"><strong>543.676</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="action-buttons">
+            <button type="button" onclick="addLot()">Thêm lô</button>
+            <button type="button" onclick="addRowToCurrentLot()">Thêm dòng</button>
+            <button type="button" onclick="removeLastRow()">Xóa dòng cuối</button>
+            <button type="button" onclick="calculateAllTotals()">Tính tổng</button>
+        </div>
+
+        <div class="grand-totals">
+            <div class="grand-total-row">
+                <span class="label">TỔNG CỘNG</span>
+                <span class="total-qty" id="total-quantity">10.316.95</span>
+                <span class="total-amount" id="total-amount">1.459.048</span>
+            </div>
+            <div class="grand-total-row">
+                <span class="label">(-) TỔNG CỘNG</span>
+                <span class="total-qty">28.4 FM A4</span>
+                <span class="total-amount" id="total-deduction">12.111</span>
+            </div>
+            <div class="grand-total-row final">
+                <span class="label"><strong>DƯ</strong></span>
+                <span class="total-qty"></span>
+                <span class="total-amount" id="final-total">1.446.937</span>
+            </div>
+        </div>
+
+        <div class="print-buttons">
+            <button type="button" onclick="printInvoice()" class="print-btn">In phiếu</button>
+            <button type="button" onclick="clearForm()" class="clear-btn">Làm mới</button>
+            <button type="button" onclick="loadSampleData()" class="sample-btn">Tải dữ liệu mẫu</button>
+            <button type="button" onclick="goToMainInvoice()" class="nav-btn">Phiếu nhập chính</button>
+        </div>
+    </div>
+
+    <script src="phieu-tam-tinh.js"></script>
+</body>
+</html>

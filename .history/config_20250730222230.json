@@ -1,0 +1,91 @@
+{
+  "companyInfo": {
+    "name": "Công ty CP Thủy sản Sóc Việt Nam",
+    "address": "Lô E Khu Công nghiệp An Nghiệp, Sóc Trăng",
+    "taxCode": "2200255351",
+    "phone": "",
+    "email": "",
+    "website": ""
+  },
+  "documentSettings": {
+    "documentTitle": "PHIẾU NHẬP MUA TÔM NGUYÊN LIỆU",
+    "documentCode": "078 CP/05",
+    "dateFormat": "dd/mm/yyyy",
+    "currency": "VNĐ",
+    "taxRate": 0.1,
+    "defaultUnit": "KG"
+  },
+  "defaultCustomer": {
+    "name": "3AHIPHARM Group TNHH Thủy Sản Hào Lộc Phát",
+    "address": "Ấp Phước Tân, X.Phước Long, H.Phước Long, T.Bạc Liêu, VN",
+    "phone": "0913484220",
+    "taxCode": "1900682886",
+    "cmnd": ""
+  },
+  "signatures": [
+    {
+      "title": "NGƯỜI LẬP BIỂU",
+      "subtitle": "(Ký, họ tên)",
+      "name": "",
+      "position": ""
+    },
+    {
+      "title": "NGƯỜI GIAO",
+      "subtitle": "(Ký, họ tên)",
+      "name": "",
+      "position": ""
+    },
+    {
+      "title": "KẾ TOÁN TRƯỞNG",
+      "subtitle": "(Ký, họ tên)",
+      "name": "",
+      "position": ""
+    },
+    {
+      "title": "TỔNG GIÁM ĐỐC",
+      "subtitle": "(Ký, họ tên)",
+      "name": "",
+      "position": ""
+    }
+  ],
+  "sampleData": {
+    "items": [
+      {
+        "soCt": "00988",
+        "ngay": "2025-05-15",
+        "dienGiai": "Phiếu nhập mua tôm nguyên liệu",
+        "dvt": "KG",
+        "soLuong": 640.80,
+        "gia": 161.371,
+        "thanhTien": 1034036184
+      },
+      {
+        "soCt": "00989",
+        "ngay": "2025-05-15",
+        "dienGiai": "Phiếu nhập mua tôm nguyên liệu",
+        "dvt": "KG",
+        "soLuong": 1821.80,
+        "gia": 156.140,
+        "thanhTien": 284455852
+      }
+    ],
+    "totals": {
+      "tongCong": 1318492036,
+      "congThemHang": 0,
+      "tienThue": 0,
+      "tongThanhToan": 1318492036
+    }
+  },
+  "printSettings": {
+    "pageSize": "A4",
+    "margin": "15mm",
+    "fontSize": {
+      "header": "14px",
+      "content": "11px",
+      "table": "10px",
+      "signature": "9px"
+    },
+    "showSampleData": true,
+    "autoCalculate": true
+  }
+}

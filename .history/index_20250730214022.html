@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu Nhập Mua Tôm Nguyên Liệu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="company-info">
+                <p><strong>Công ty CP Thủy sản Sóc Việt Nam</strong></p>
+                <p>Lô E Khu Công nghiệp An Nghiệp, Sóc Trăng</p>
+            </div>
+            <div class="document-info">
+                <h2>PHIẾU NHẬP MUA TÔM NGUYÊN LIỆU</h2>
+                <p>Ngày: <span id="current-date"></span></p>
+                <div class="form-row">
+                    <label>MST: <input type="text" id="mst" value="2200255351"></label>
+                    <label>Số Ct: <input type="text" id="soCt"></label>
+                    <label>CMND: <input type="text" id="cmnd"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-row">
+                <label>Đơn vị: <input type="text" id="donVi" placeholder="Nhập đơn vị"></label>
+            </div>
+            <div class="form-row">
+                <label>Địa chỉ: <input type="text" id="diaChi" placeholder="Nhập địa chỉ"></label>
+            </div>
+            <div class="form-row">
+                <label>Điện thoại: <input type="text" id="dienThoai" placeholder="Nhập số điện thoại"></label>
+                <label>Mã số thuế: <input type="text" id="maSoThue" placeholder="Nhập mã số thuế"></label>
+            </div>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Số TT</th>
+                    <th>Số CT</th>
+                    <th>Ngày</th>
+                    <th>Diễn giải</th>
+                    <th>Đvt</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody id="invoice-items">
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" class="item-input" name="soCt"></td>
+                    <td><input type="date" class="item-input" name="ngay"></td>
+                    <td><input type="text" class="item-input" name="dienGiai" placeholder="Phiếu nhập mua tôm nguyên liệu"></td>
+                    <td><input type="text" class="item-input" name="dvt" placeholder="KG"></td>
+                    <td><input type="number" class="item-input" name="soLuong" step="0.01" onchange="calculateRowTotal(this)"></td>
+                    <td><input type="number" class="item-input" name="gia" step="0.01" onchange="calculateRowTotal(this)"></td>
+                    <td class="thanh-tien">0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="action-buttons">
+            <button type="button" onclick="addRow()">Thêm dòng</button>
+            <button type="button" onclick="removeRow()">Xóa dòng cuối</button>
+            <button type="button" onclick="calculateTotal()">Tính tổng</button>
+        </div>
+
+        <div class="totals-section">
+            <div class="totals-row">
+                <span>Tổng cộng:</span>
+                <span id="tong-cong">0</span>
+            </div>
+            <div class="totals-row">
+                <span>Cộng thêm hàng:</span>
+                <span id="cong-them-hang">0</span>
+            </div>
+            <div class="totals-row">
+                <span>Tiền thuế:</span>
+                <span id="tien-thue">0</span>
+            </div>
+            <div class="totals-row total-final">
+                <span>Tổng cộng tiền thanh toán:</span>
+                <span id="tong-thanh-toan">0</span>
+            </div>
+        </div>
+
+        <div class="signatures">
+            <div class="signature-section">
+                <p><strong>NGƯỜI LẬP BIỂU</strong></p>
+                <p>(Ký, họ tên)</p>
+                <br><br><br>
+            </div>
+            <div class="signature-section">
+                <p><strong>NGƯỜI GIAO</strong></p>
+                <p>(Ký, họ tên)</p>
+                <br><br><br>
+            </div>
+            <div class="signature-section">
+                <p><strong>KẾ TOÁN TRƯỞNG</strong></p>
+                <p>(Ký, họ tên)</p>
+                <br><br><br>
+            </div>
+            <div class="signature-section">
+                <p><strong>TỔNG GIÁM ĐỐC</strong></p>
+                <p>(Ký, họ tên)</p>
+                <br><br><br>
+            </div>
+        </div>
+
+        <div class="print-buttons">
+            <button type="button" onclick="printInvoice()" class="print-btn">In hóa đơn</button>
+            <button type="button" onclick="clearForm()" class="clear-btn">Làm mới</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
